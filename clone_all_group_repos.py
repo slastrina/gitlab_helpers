@@ -1,3 +1,17 @@
+"""
+Usage:
+* Create environment variables:
+  * gitlab_server_addr (your gitlab server address i.e. https://gitlab.com)
+  * gitlab_token (your gitlab access token)
+
+* Set list of groups in the variable: gitlab_group_names
+* Set clone root directory in the variable: repo_root_dir
+
+Output directory will be /repo_root/gitlab_group_name/gitlab_repo_name/
+
+If the directory exists, this tool will instead perform a fetch on all remotes for the given repo
+"""
+
 import os
 from pathlib import Path
 
@@ -6,8 +20,8 @@ from git import Repo
 
 gitlab_server = os.getenv('gitlab_server_addr')
 gitlab_token = os.getenv('gitlab_token')
-gitlab_group_names = ['eis']
 
+gitlab_group_names = ['eis']
 repo_root_dir = os.path.join(str(Path.home()), 'downloads', 'repos')
 
 gl = gitlab.Gitlab(gitlab_server, private_token=gitlab_token, ssl_verify=False)
