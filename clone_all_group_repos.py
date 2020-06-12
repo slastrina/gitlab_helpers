@@ -21,7 +21,7 @@ from git import Repo
 gitlab_server = os.getenv('gitlab_server_addr')
 gitlab_token = os.getenv('gitlab_token')
 
-gitlab_group_names = ['eis', 'pni', 'elms']
+gitlab_group_names = ['eis', 'pni', 'elms', 'fls']
 repo_root_dir = os.path.join(str(Path.home()), 'git', 'nbnco')
 
 gl = gitlab.Gitlab(gitlab_server, private_token=gitlab_token, ssl_verify=False)
