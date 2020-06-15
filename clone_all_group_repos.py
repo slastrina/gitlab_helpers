@@ -25,9 +25,9 @@ gitlab_group_names = [
     'eis',
     'pni',
     'elms',
-    'fls'
-
+    'fls',
 ]
+
 repo_root_dir = os.path.join(str(Path.home()), 'git', 'nbnco')
 
 gl = gitlab.Gitlab(gitlab_server, private_token=gitlab_token, ssl_verify=False)
