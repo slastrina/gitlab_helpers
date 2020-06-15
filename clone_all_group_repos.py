@@ -16,7 +16,7 @@ import os
 from pathlib import Path
 
 import gitlab
-from git import Repo
+from git import Repo, GitCommandError
 
 gitlab_server = os.getenv('gitlab_server_addr')
 gitlab_token = os.getenv('gitlab_token')
@@ -49,4 +49,9 @@ for group_name in gitlab_group_names:
                 remote.fetch()
         else:
             print(f'Cloning {group_name}:', project.name, project.http_url_to_repo)
-            Repo.clone_from(project.http_url_to_repo, os.path.join(destination, clone_path))
+            try:
+                Repo.clone_from(project.http_url_to_repo, os.path.join(destination, clone_path))
+            except GitCommandError as ex:
+                print(f'Probably dont have permission to download: {ex}')
+            except Exception as ex:
+                print(ex)
