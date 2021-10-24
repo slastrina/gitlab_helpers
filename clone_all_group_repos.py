@@ -26,6 +26,9 @@ gitlab_group_names = [
     'pni',
     'elms',
     'fls',
+    'ful',
+    'archlabs',
+    'ignite',
 ]
 
 repo_root_dir = os.path.join(str(Path.home()), 'git', 'nbnco')
